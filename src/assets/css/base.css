@@ -1,11 +1,11 @@
 :root {
     --font-family: 'Arial', sans-serif;
-    --color-primary: #3498db;
-    --color-secondary: #2ecc71;
+    --color-primary: #0a1fc0;
+    --color-secondary: #632ecc;
     --color-background: #f9f9f9;
     --color-text: #333;
-    --color-link: #2980b9;
-    --color-link-hover: #1abc9c;
+    --color-link: #e600ff;
+    --color-link-hover: #5eefd2;
 }
 
 body {
