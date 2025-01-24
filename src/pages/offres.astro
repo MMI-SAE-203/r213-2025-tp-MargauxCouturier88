@@ -2,6 +2,7 @@
 import Header from "../components/Header.astro";
 import Base from '../layouts/Base.astro';
 import '../assets/css/base.css'
+import Card from "../components/Card.astro";
 
 const offres = [
     {
@@ -13,7 +14,7 @@ const offres = [
         "nomMaison": "Beverly Springfield",
         "prix": 2700,
         "surface": 45,
-        "imgUrl": "image1.png"
+        "imgUrl": "image1"
     },
     {
         "adresse": "2699 Green Valley, Highland Lake",
@@ -24,7 +25,7 @@ const offres = [
         "nomMaison": "Palm Harbor",
         "prix": 2095,
         "surface": 42,
-        "imgUrl": "image2.png"
+        "imgUrl": "image2"
     },
     {
         "adresse": "909 Woodland St, Michigan, IN",
@@ -35,28 +36,25 @@ const offres = [
         "nomMaison": "Faulkner Ave",
         "prix": 4550,
         "surface": 80,
-        "imgUrl": "image3.png"
+        "imgUrl": "image3"
     }
 ]
 
 ---
 <Base>
     <h1 class="text-4xl font-bold text-blue-700 mb-4">Offres</h1>
-    <div>
-    { offres.map((offre) => 
-    <ul>
-        <li>adresse={offre.adresse}</li>
-        <li>favori={offre.favori}</li>
-        <li>id={offre.id}</li>
-        <li>nbChambres={offre.nbChambres}</li>
-        <li>nbSdb={offre.nbSdb}</li>
-        <li>nomMaison={offre.nomMaison}</li>
-        <li>prix={offre.prix}</li>
-        <li>surface={offre.surface}</li>
-        <li>imgUrl={offre.imgUrl}</li>
-    </ul>
-        )
-    }
+    <div x-data="{ showFavorites: false }">
+        <button @click="showFavorites = !showFavorites">
+            <span x-show="!showFavorites">Afficher les favoris</span>
+            <span x-show="showFavorites">Afficher tout</span>
+        </button>
+    
+        <div x-show="!showFavorites">
+            {offres.map((offre) => <Card {...offre} />)}
+        </div>
+        <div x-show="showFavorites">
+            {offres.map((offre) => offre.favori && <Card {...offre} />)}
+        </div>
     </div>
 </Base>
 
