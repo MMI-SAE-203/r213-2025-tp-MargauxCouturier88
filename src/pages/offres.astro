@@ -3,7 +3,10 @@ import Header from "../components/Header.astro";
 import Base from '../layouts/Base.astro';
 import '../assets/css/base.css'
 import Card from "../components/Card.astro";
+import { getOffres } from "../backend.mjs";
 
+const offres = await getOffres();
+/*
 const offres = [
     {
         "adresse": "2821 Lake Sevilla, Palm Harbor, TX",
@@ -39,7 +42,7 @@ const offres = [
         "imgUrl": "image3"
     }
 ]
-
+*/
 ---
 <Base>
     <h1 class="text-4xl font-bold text-blue-700 mb-4">Offres</h1>
