@@ -1,9 +1,9 @@
 ---
-import Header from "../components/Header.astro";
-import Base from '../layouts/Base.astro';
-import '../assets/css/base.css'
-import Card from "../components/Card.astro";
-import { getOffres } from "../backend.mjs";
+import Header from "../../components/Header.astro";
+import Base from '../../layouts/Base.astro';
+import '../../assets/css/base.css'
+import Card from "../../components/Card.astro";
+import { getOffres } from "../../backend.mjs";
 
 const offres = await getOffres();
 
