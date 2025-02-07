@@ -1,0 +1,23 @@
+---
+import { getOffre } from "../../../backend.mjs";
+import { getSurface } from "../../../backend.mjs";
+import Card from "../../../components/Card.astro";
+import Base from "../../../layouts/Base.astro";
+
+const { surface } = Astro.params;
+console.log(surface);
+
+const offres = await getSurface(surface);
+console.log(offres);
+---
+
+<Base>
+    
+        <p>Voici les maisons de plus de {surface}m².</p>
+    
+        {
+            offres.map((offre) => (
+               <Card {...offre}/>
+            ))
+        }
+</Base>
