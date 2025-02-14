@@ -4,16 +4,20 @@ const {...offre} = Astro.props;
 
 <div x-data="{favori: '${offre.favori}'}" 
      x-bind:class="{ 'text-white': favori, 'text-gray-900': !favori }" 
-     class="p-4 rounded-2xl shadow-lg border border-gray-300 flex flex-col gap-2 w-72 bg-white">
+     class="p-4 rounded-2xl shadow-lg border border-gray-300 flex flex-col gap-2 w-72 bg-white mx-auto mb-2">
     
-    <img src={offre.image} alt={offre.image} class="w-64 h-64 object-cover" />
+    <img src={offre.image} alt={offre.image} class="w-64 h-64 object-cover mx-auto" />
     
-    <h2 class="text-xl font-bold">{offre.nomMaison}</h2>
+    <h2 class="text-xl font-bold text-center">{offre.nomMaison}</h2>
     
     <button x-on:click="favori = !favori" 
             class="mt-3 px-4 py-2 rounded-lg text-black w-full"
             :class="favori ? 'bg-red-600' : 'bg-blue-600'">
         <span x-text="favori ? 'Retirer des favoris' : 'Ajouter aux favoris'"></span>
     </button>
+
+    <a class="mt-2 text-center w-full bg-gray-800 text-white py-2 rounded-lg hover:bg-gray-900 transition" 
+       href={`/offres/${offre.id}`}>
+        Voir plus
+    </a>
 </div>
-<a href={`/offres/${offre.id}`}>Voir plus</a>

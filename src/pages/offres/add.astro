@@ -1,6 +1,6 @@
 ---
 import {addOffre} from '../../backend.mjs';
-let message = 'Enoyer';
+let message = 'Votre offre a bien été ajoutée';
 if (Astro.request.method === "POST") {
     const formData = await Astro.request.formData();
     const response = await addOffre(formData);
