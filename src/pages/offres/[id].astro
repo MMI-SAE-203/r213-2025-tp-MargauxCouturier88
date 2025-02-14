@@ -10,12 +10,14 @@ if(!offre){
 ---
 
 <Base titre={offre.nomMaison}>
-    <h2>{offre.nomMaison}</h2>
-    <ul>
-        <li> Adresse : {offre.adresse}</li>
-        <li>{offre.nbChambres} Chambre(s)</li>
-        <li>{offre.nbSdb} Salle de bain</li>
-        <li>{offre.surface} m2</li>
-        <li>Prix : {offre.prix} €</li>
-    </ul>
+    <div class="max-w-lg mx-auto bg-white rounded-xl shadow-md p-6 space-y-4">
+        <h2 class="text-2xl font-bold text-gray-900">{offre.nomMaison}</h2>
+        <ul class="space-y-2 text-gray-700">
+            <li class="flex items-center gap-2">📍 <span class="font-medium">Adresse :</span> {offre.adresse}</li>
+            <li class="flex items-center gap-2">🛏️ <span class="font-medium">{offre.nbChambres} Chambre(s)</span></li>
+            <li class="flex items-center gap-2">🚿 <span class="font-medium">{offre.nbSdb} Salle de bain</span></li>
+            <li class="flex items-center gap-2">📏 <span class="font-medium">{offre.surface} m²</span></li>
+            <li class="flex items-center gap-2 text-purple-600 font-semibold text-lg">💰 Prix : {offre.prix} €</li>
+        </ul>
+    </div>
 </Base>
