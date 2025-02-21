@@ -38,7 +38,7 @@ export async function getSurface(s) {
 
 export async function addOffre(house) {
     try {
-        await pb.collection('maison').create(house);
+        await pb.collection('Maison').create(house);
         return {
             success: true,
             message: 'Offre ajoutée avec succès'
@@ -54,7 +54,7 @@ export async function addOffre(house) {
 
 export async function filterByPrix(prixMin, prixMax) {
     try {
-        let data = await pb.collection('maison').getFullList({
+        let data = await pb.collection('Maison').getFullList({
             sort: '-created',
             filter: `prix >= ${prixMin} && prix <= ${prixMax}`
         });
@@ -66,5 +66,34 @@ export async function filterByPrix(prixMin, prixMax) {
     } catch (error) {
         console.log('Une erreur est survenue en filtrant la liste des maisons', error);
         return [];
+    }
+}
+
+export async function allAgent() {
+    try {
+        const records = await pb.collection('Agent').getFullList();
+        return records;
+    }
+    catch (error) {
+        console.log('Une erreur est survenue en lisant la liste des agents', error);
+        return [];
+    }
+
+}
+
+export async function setFavori(house) {
+    try {
+        await pb.collection('Maison').update(house.id, {favori: !house.favori});
+        return {
+            success: true,
+            message: 'Favori modifié avec succès'
+        };
+    }
+    catch (error) {
+        console.log('Une erreur est survenue en modifiant le favori', error);
+        return {
+            success: false,
+            message: 'Une erreur est survenue en modifiant le favori'
+        };
     }
 }

@@ -1,0 +1,18 @@
+---
+import { allAgent } from '../../backend.mjs'; // 
+const { id } = Astro.params; 
+
+const offres = await allAgent(); 
+---
+
+<head>
+  <title>Offres de l'agent {id}</title>
+</head>
+<body>
+  <h1>Offres de l’agent {id}</h1>
+  <ul>
+    {offres.map(offre => (
+      <li>{offre.nom} - {offre.prix}€</li>
+    ))}
+  </ul>
+</body>
